@@ -22,6 +22,9 @@
 #ifndef SUMO_BASICS_H
 #define SUMO_BASICS_H
 
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <cstdint>
 #include <mutex>
 #include <queue>

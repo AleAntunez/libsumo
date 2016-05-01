@@ -414,11 +414,11 @@ bool Control::open()
 	memset(&addr, 0, sizeof(addr));
 	addr.sin_family = AF_INET;
 	addr.sin_addr.s_addr = htonl(INADDR_ANY);
-	addr.sin_port = htons(54321);
-	if (bind(_udp, (struct sockaddr *) &addr, sizeof(addr)) != 0) {
+        addr.sin_port = htons(54321);
+        if ( ::bind(_udp, (struct sockaddr *) &addr, sizeof(addr)) != (int) 0) {
 		fprintf(stderr, "bind failed\n");
 		goto bind_error;
-	}
+        }
 
 	/* init object */
 	_rt = new RealTime(this);

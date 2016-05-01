@@ -1,3 +1,11 @@
+FORK FROM ORIGINAL REPO FROM iloreen
+
+- Added compatibility for OS X (Not tested the Qt 4 app, just fixed some things at lib)
+
+- Some tips for compiling on OS X...
+	- Tested on clang 7.3.0
+	- Flags std=c++14 / std=c++11 are required for compiling without errors
+
 What is this?
 -------------
 

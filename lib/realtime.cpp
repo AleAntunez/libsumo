@@ -22,7 +22,8 @@
 #include "realtime.h"
 
 #include "protocol.h"
-
+#include <unistd.h>
+#include <time.h>
 #include "control.h"
 
 namespace sumo {
@@ -57,7 +58,7 @@ void RealTime::heartBeatOut()
 				delete[] b;
 			} else {
 				struct timespec tp;
-				if (clock_gettime(CLOCK_MONOTONIC, &tp) != 0) {
+                                if (clock_gettime(0, &tp) != 0) {
 					msleep(10);
 					continue;
 				}

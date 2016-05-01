@@ -23,7 +23,7 @@
 #define SUMO_REALTIME_H
 
 #include "basics.h"
-
+#include <common.h>
 #include <cstring>
 
 namespace sumo {

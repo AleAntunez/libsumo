@@ -32,7 +32,7 @@
 using namespace sumo;
 
 static int prefix;
-static int count;
+static int dec_count;
 
 void udpIn(const uint8_t *b, uint32_t len)
 {
@@ -133,9 +133,9 @@ void udpIn(const uint8_t *b, uint32_t len)
 
 			//write | mplayer -demuxer lavf -lavfdopts format=mjpeg  -
 			char s[FILENAME_MAX];
-			snprintf(s, sizeof(s), "img/%03d-image-%05d.jpg", prefix, count);
-			//snprintf(s, sizeof(s), "img/image.jpg", count);
-			count++;
+                        snprintf(s, sizeof(s), "img/%03d-image-%05d.jpg", prefix, dec_count);
+                        //snprintf(s, sizeof(s), "img/image.jpg", count);
+                        dec_count++;
 
 			int file = open(s, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 			write(file, b + sizeof(struct header) + 5, len - sizeof(struct header) - 5);
@@ -192,7 +192,7 @@ void udpOut(const uint8_t *b, uint32_t len)
 			break;
 		case IOCTL: {
 			prefix++;
-			count = 0;
+                        dec_count = 0;
 
 			auto *a = reinterpret_cast<const struct ioctl_packet *>(b);
 			printf("ioctl: flags: %02x, type: %d, func: %d; unk: %d, prefix: %d\t", a->flags, a->type, a->func, a->unk, prefix);

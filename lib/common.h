@@ -32,6 +32,9 @@
 #include <string>
 #include <unistd.h>
 #include <sys/time.h>
+#include <iostream>
+#include <string>
+#include <sstream>
 
 using namespace std;
 enum severity {
@@ -50,5 +53,11 @@ enum severity {
 
 extern void _handle_error (enum severity s, const char *func, const char *filename, const unsigned int line, const char *fmt ...);
 extern void dumpPayload(const uint8_t *packet, uint32_t l, bool floats = true);
+
+#ifdef __MACH__
+#include <sys/time.h>
+//clock_gettime is not implemented on OSX
+int clock_gettime(int /*clk_id*/, struct timespec* t);
+#endif
 
 #endif
