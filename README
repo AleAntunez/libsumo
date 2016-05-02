@@ -1,6 +1,6 @@
 FORK FROM ORIGINAL REPO FROM iloreen
 
-- Added compatibility for OS X (Not tested the Qt 4 app, just fixed some things at lib)
+- Added compatibility for OS X and new Qt 5 app
 
 - Some tips for compiling on OS X...
 	- Tested on clang 7.3.0
