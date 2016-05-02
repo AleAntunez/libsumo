@@ -66,6 +66,16 @@ test/
 
 See README.dev for me information on the code.
 
+Get it working (on OS X)
+————————————————————————-
+
+0) clang >= 7.3.0 (Xcode Command Tools)
+
+1) Homebrew installed to resolve some dependencies…
+	- OpenCV 2 [2.4.12_2]
+
+2) Qt 5.x to compile JumpingSumoApp [Not needed by test application]
+
 Get it working (on Linux)
 -------------------------
 
