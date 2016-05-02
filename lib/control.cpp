@@ -62,6 +62,7 @@ public:
 	{
 		uint8_t seqno = 1;
 		while (!_stop) {
+            fprintf(stderr, "VUELTA_BLOQUE");
 			uint8_t *b = getMessage();
 			if (!b)
 				break;
@@ -118,10 +119,10 @@ public:
 				break;
 			}
 
-			struct ack ack(io->head.ext | 0x80, seqno++, io->head.seqno);
+            struct ack ack(io->head.ext | 0x80, seqno++, io->head.seqno);
 			_dp->send(ack);
 
-			delete[] b;
+            delete[] b;
 		}
 	}
 
@@ -387,7 +388,7 @@ bool Control::open()
 
 	memset(&servaddr, 0, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
-	servaddr.sin_addr.s_addr = inet_addr("192.168.2.1");
+    servaddr.sin_addr.s_addr = inet_addr("192.168.2.1");
 	servaddr.sin_port = htons(44444);
 
 	if (connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr)) != 0) {
